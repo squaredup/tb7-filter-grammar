@@ -1,0 +1,8 @@
+# Specify filepatterns you want git to ignore.
+.antlr/*
+*.jar
+*.class
+*.java
+*.tokens
+*.interp
+*.tb7
