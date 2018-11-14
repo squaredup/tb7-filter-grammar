@@ -1,0 +1,1 @@
+java -jar "antlr-4.7.1-complete.jar" -o go -Dlanguage=Go tb7f.g4 

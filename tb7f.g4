@@ -12,11 +12,13 @@ entity_source: 'source';
 
 special_entity:  entity_flow | entity_target | entity_source;
 
+entity_literal_name: QUOTED_STRING;
+
 // e.g. source.Myproperty
 special_entity_with_property: special_entity ENTITY_PROPERTY;
 
 // Entity is any special built-in OR a literal string
-entity: special_entity | special_entity_with_property | QUOTED_STRING;
+entity: special_entity | special_entity_with_property | entity_literal_name;
 
 op_crosses: 'crosses';
 op_is: 'is';
@@ -27,12 +29,13 @@ op_entity: op_crosses|op_is;
 op_and: 'and';
 op_or: 'or';
 
-op_logical : op_and | op_or;
+assertion: entity op_entity entity;
 
 expression: 
     bracketed_expression |
-    entity op_entity entity | 
-    expression op_logical expression;          
+    expression op_and expression |
+    expression op_or expression |    
+    assertion ;          
 
 bracketed_expression: '(' expression ')';
 
